@@ -3,6 +3,11 @@ body {
     margin: 20px;
 }
 
+#frame0{
+    height: 10vh;
+    width: 99vw;
+}
+
 #app {
     max-width: 600px;
     margin: 0 auto;
@@ -35,6 +40,20 @@ button {
 #hotelDetails {
     margin-top: 10px;
 }
+button {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
 .modal-container {
     position: fixed;
     top: 50%;
