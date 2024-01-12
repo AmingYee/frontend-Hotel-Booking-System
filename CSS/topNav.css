@@ -20,6 +20,12 @@ button {
     margin: 10px;
 }
 
+#Reservation{
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    margin-right: 120px;
+}
 #logout {
     background-color: #e74c3c;
     color: #fff;

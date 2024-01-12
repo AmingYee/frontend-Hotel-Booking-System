@@ -93,6 +93,26 @@ async function createReservation(reservationData) {
     });
 }
 
+async function getClientReservations(clientId) {
+    try {
+        const data = await fetchFromApi(`client/${clientId}`);
+        return data;
+    } catch (error) {
+        console.error('Error fetching client reservations:', error);
+        throw error;
+    }
+}
+
+async function fetchUserIdFromToken() {
+    try {
+        const userId = await fetchFromApi('user/id');
+        console.log('User ID:', userId);
+        return userId
+    } catch (error) {
+        console.error('Error fetching user ID:', error);
+    }
+}
+
 export {
     fetchFromApi,
     getHotels,
@@ -104,4 +124,6 @@ export {
     createUser,
     login,
     createReservation,
+    fetchUserIdFromToken,
+    getClientReservations,
 };
