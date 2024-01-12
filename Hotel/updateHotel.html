@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Hotel</title>
+</head>
+<body>
+<h1>Update Hotel</h1>
+
+<form id="updateHotelForm">
+    <label for="name">Hotel Name:</label>
+    <input type="text" id="name" required>
+
+    <label for="street">Street:</label>
+    <input type="text" id="street" required>
+
+    <label for="city">City:</label>
+    <input type="text" id="city" required>
+
+    <label for="zip">ZIP Code:</label>
+    <input type="text" id="zip" required>
+
+    <label for="country">Country:</label>
+    <input type="text" id="country" required>
+
+        <button type="button" id="updateHotelButton">Update Hotel</button>
+
+    </form>
+<div id="confirmation-message" style="display: none;"></div>
+
+    <script type="module" src="../JS/API.js"></script>
+    <script type="module" src="../JS/updateHotel.js"></script>
+    </body>
+</html>

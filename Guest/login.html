@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="../CSS/login.css">
+</head>
+<body>
+<div class="container">
+  <h1>Login</h1>
+
+  <div class="input-container">
+    <label for="username">User name</label>
+    <input id="username" />
+  </div>
+
+  <div class="input-container">
+    <label for="password">Password</label>
+    <input type="password" id="password" />
+  </div>
+
+  <button id="login">Login</button>
+  <button id="goToNewUser">New User</button>
+  <button id="goToAdminUser">New Admin</button>
+
+  <div id="response"></div>
+</div>
+
+<script type="module" src="../JS/API.js"></script>
+<script type="module" src="../JS/login.js"></script>
+</body>
+</html>
