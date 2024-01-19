@@ -6,7 +6,6 @@ const headers = {
 
 async function fetchFromApi(endpoint, options = {}) {
     const jwtToken = sessionStorage.getItem('jwtToken');
-
     if (jwtToken) {
         headers['Authorization'] = `${jwtToken}`;
     }
@@ -15,9 +14,9 @@ async function fetchFromApi(endpoint, options = {}) {
         ...options,
         headers: {
             ...headers,
-            'Content-Type': 'application/json',
         },
     });
+    console.log(headers)
 
     const authorizationHeader = response.headers.get('Authorization');
     if (authorizationHeader) {
