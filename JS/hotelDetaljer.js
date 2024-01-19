@@ -58,16 +58,15 @@ document.addEventListener('DOMContentLoaded', async function () {
             confirmBtn.addEventListener('click', async () => {
                 const reservationDate = reservationDateInput.value;
                 if (reservationDate) {
-                    await reserveRoom(room.id, userId, reservationDate); // Pass userId here
+                    await reserveRoom(room.id, userId, reservationDate);
                     alert('Reservation created successfully!');
-                    closeModal(modalContainer);
                 } else {
                     alert('Please select a valid date.');
                 }
             });
 
             const modalContainer = document.createElement('div');
-            modalContainer.classList.add('modal-container'); // Add the modal class
+            modalContainer.classList.add('modal-container');
             modalContainer.appendChild(reservationDateInput);
             modalContainer.appendChild(confirmBtn);
 
@@ -78,29 +77,22 @@ document.addEventListener('DOMContentLoaded', async function () {
         return roomElement;
     }
 
-    function reserveRoom(roomId, reservationDate) {
+    async function reserveRoom(roomId, userId,reservationDate) {
         try {
-            const userId = fetchUserIdFromToken();
             console.log('roomId:', roomId);
             console.log('userId:', userId);
             console.log('reservationDate:', reservationDate);
 
-            const response = fetchFromApi(`create-reservation?roomId=${roomId}&clientId=${userId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    room: {id: roomId},
-                    reservationDate: reservationDate,
-                }),
-            });
+            const dateparse = new Date(reservationDate);
 
-            if (!response.ok) {
-                throw new Error(`Error creating reservation: ${response.statusText}`);
-            }
+            const formatdate = dateparse.toISOString();
 
-            const data = response.json();
+            const reservationData = {
+                reservationDate: formatdate
+            };
+
+            const data = createReservation(reservationData, roomId, userId);
+
             console.log('Reservation created:', data);
             alert('Reservation created successfully!');
         } catch (error) {

@@ -86,8 +86,8 @@ async function createRoom(roomData, hotelId) {
 }
 
 // Reservations
-async function createReservation(reservationData) {
-    return fetchFromApi('reservations', {
+async function createReservation(reservationData, roomId, clientId) {
+    return fetchFromApi(`reservation?roomId=${roomId}&clientId=${clientId}`, {
         method: 'POST',
         body: JSON.stringify(reservationData),
     });
@@ -95,12 +95,18 @@ async function createReservation(reservationData) {
 
 async function getClientReservations(clientId) {
     try {
-        const data = await fetchFromApi(`client/${clientId}`);
+        const data = await fetchFromApi(`reservation/client/${clientId}`);
         return data;
     } catch (error) {
         console.error('Error fetching client reservations:', error);
         throw error;
     }
+}
+
+async function deleteReservation(reservationId) {
+    return fetchFromApi(`reservation/${reservationId}`, {
+        method: 'DELETE',
+    });
 }
 
 async function fetchUserIdFromToken() {
@@ -126,4 +132,5 @@ export {
     createReservation,
     fetchUserIdFromToken,
     getClientReservations,
+    deleteReservation
 };

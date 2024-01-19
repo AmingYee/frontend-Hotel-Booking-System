@@ -1,6 +1,7 @@
 import {
     fetchUserIdFromToken,
     getClientReservations,
+    deleteReservation
 } from './API.js';
 
 document.addEventListener('DOMContentLoaded', async function () {
@@ -16,7 +17,15 @@ document.addEventListener('DOMContentLoaded', async function () {
             data.forEach(reservation => {
                 const li = document.createElement('li');
                 li.textContent = `Reservation ID: ${reservation.id}, Reservation Date: ${reservation.reservationDate}`;
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.onclick = function () {
+                    deleteReservation(reservation.id);
+                };
+
                 ul.appendChild(li);
+                ul.appendChild(deleteButton)
             });
             reservationsList.appendChild(ul);
         } else {
