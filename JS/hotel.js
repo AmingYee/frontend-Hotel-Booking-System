@@ -67,7 +67,7 @@ async function deleteH(hotelId) {
     if (confirmDelete) {
         try {
             const response = await deleteHotel(hotelId);
-
+            //TODO: its not checking the status from server and need to add functionality that says when user doesn't have authority to delete
             if (response.status === 200) {
                 alert('Hotel deleted successfully!');
                 await getAllHotels();

@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 }
             });
 
-            const modalContainer = document.createElement('div');
+            const modalContainer = document.createElement('div'); //TODO: cleanup the container i created after use
             modalContainer.classList.add('modal-container');
             modalContainer.appendChild(reservationDateInput);
             modalContainer.appendChild(confirmBtn);
